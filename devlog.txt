@@ -4,15 +4,15 @@ TNPG: Spin The Wheel
 Software Development
 Pr0 - Scenario Sigma
 
-SakinaR -- 2026-11-04 14:24
-Devlog initialization.
-
-SakinaR -- 2026-11-04 22:13
-Worked on Front-End diagrams using Slide. Completed necessary sections to Design Document. Listed components and component relationship modeled through a map diagram with mention of functions. 
-
 CarolineT -- 2026-11-05 14:43
 - Assigned tasks in Design doc (with teammates)
 - Set up file structure in group repo
+
+SakinaR -- 2026-11-05 14:24
+Added to ReadMe and added Flag. Devlog initialization.
+
+SakinaR -- 2026-11-04 22:13
+Worked on Front-End diagrams using Slide. Completed necessary sections to Design Document. Listed components and component relationship modeled through a map diagram with mention of functions.
 
 CarolineT -- 2026-11-04 20:30
 - Wrote components section in design doc
@@ -20,7 +20,3 @@ CarolineT -- 2026-11-04 20:30
 
 MatthewC -- 2026-11-04
 - Linked submodule
-Pr0 - Scenario Sigma
-
-SakinaR -- 2026-11-05 14:24
-Added to ReadMe and added Flag.
