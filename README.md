@@ -8,4 +8,10 @@
 - Caroline Tham – 
 - Efaz Khan – 
 
+##Description of Website:
+
+
+##Install Guide --> how to clone/install
+
+##Launch Codes --> How to run
 
