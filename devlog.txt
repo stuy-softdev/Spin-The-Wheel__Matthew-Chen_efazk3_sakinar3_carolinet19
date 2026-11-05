@@ -5,5 +5,13 @@ Software Development
 Pr0 - Scenario Sigma
 
 
+CarolineT -- 2026-11-05 14:43
+- Assigned tasks in Design doc (with teammates)
+- Set up file structure in group repo
+
 SakinaR -- 2026-11-05 14:24
-Devlog initialization. 
+Devlog initialization.
+
+CarolineT -- 2026-11-04 20:30
+- Wrote components section in design doc
+- Wrote database section in design doc
