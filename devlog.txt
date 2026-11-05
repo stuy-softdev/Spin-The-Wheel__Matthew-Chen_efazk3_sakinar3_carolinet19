@@ -4,6 +4,9 @@ TNPG: Spin The Wheel
 Software Development
 Pr0 - Scenario Sigma
 
-
 SakinaR -- 2026-11-05 14:24
-Devlog initialization. 
+
+MatthewC -- 2026-11-04
+- Linked submodule
+
+Devlog initialization.
