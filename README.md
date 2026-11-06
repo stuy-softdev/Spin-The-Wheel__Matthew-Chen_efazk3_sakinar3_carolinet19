@@ -1,3 +1,9 @@
+### Matthew Chen, Sakina Raza, Caroline Tham, Efaz Khan
+### PM: Matthew Chen
+### TNPG: Spin The Wheel
+### Software Development
+### Pr0 - Scenario Sigma
+
 #<Pr0 - Scenario Sigma> by <Spin The Wheel>
 
 ##Roster + Roles:
