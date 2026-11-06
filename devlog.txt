@@ -6,6 +6,9 @@
 
 #-------------------------------------------------------
 
+CarolineT -- 2026-11-06 14:48
+- Updated readme, worked on design doc with team assigning backup roles
+
 SakinaR -- 2026-11-06 14:16
 Added design.pdf to repo. Gave access to doc. Worked on assigning roles.
 
