@@ -4,8 +4,13 @@ TNPG: Spin The Wheel
 Software Development
 Pr0 - Scenario Sigma
 
+<<<<<<< HEAD
 SakinaR -- 2026-11-06 14:16
 Added design.pdf to repo. Gave access to doc. Worked on assigning roles.
+=======
+MatthewC -- 2026-11-06 14:18
+- Added descriptions for the tasks in the design doc
+>>>>>>> a7576e68283344490b9bead4683db353a8bb4d37
 
 CarolineT -- 2026-11-05 14:43
 - Assigned tasks in Design doc (with teammates)
