@@ -1,0 +1,9 @@
+### Matthew Chen, Sakina Raza, Caroline Tham, Efaz Khan
+### PM: Matthew Chen
+### TNPG: Spin The Wheel
+### Software Development
+### Pr0 - Scenario Sigma
+
+- It will list flask as well as any other pip installs your app requires.
+- Latest version of all packages.
+- Clearance must be sought and granted for any modules/libraries not explicitly covered in class.
