@@ -5,6 +5,16 @@
 ### Pr0 - Scenario Sigma
 
 #-------------------------------------------------------
+CarolineT -- 2026-11-07 10:29
+Worked on design doc to match it to the template in notes-and-code
+- Added summary/problem being solved/target users section to design doc
+- Added MVP section to design doc
+- Added Tech stack section to design doc
+- Based on agreed upon roles from class, changed the tasks section in design doc to align with the template (team ownership plan)
+- Added Testing plan/Completion Criteria section to design doc
+
+CarolineT -- 2026-11-06 14:48
+- Updated readme, worked on design doc with team assigning backup roles
 
 
 SakinaR -- 2026-11-07 13:10
