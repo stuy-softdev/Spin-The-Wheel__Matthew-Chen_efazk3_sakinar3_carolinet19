@@ -6,6 +6,13 @@
 
 #-------------------------------------------------------
 
+
+SakinaR -- 2026-11-07 13:10
+Added paragraph for timeline, fixed component relation map
+
+CarolineT -- 2026-11-06 
+
+
 SakinaR -- 2026-11-06 14:16
 Added design.pdf to repo. Gave access to doc. Worked on assigning roles.
 
