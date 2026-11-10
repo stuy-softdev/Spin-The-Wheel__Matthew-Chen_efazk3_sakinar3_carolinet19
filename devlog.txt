@@ -9,6 +9,7 @@
 MatthewC -- 2026-11-10 14:45
 - Made templates
 - Set up a basic index page
+- Added requirements.txt
 
 CarolineT -- 2026-11-08 20:30
 - Made minor changes to timeline of design doc
