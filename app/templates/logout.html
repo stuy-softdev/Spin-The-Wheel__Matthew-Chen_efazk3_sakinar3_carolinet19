@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title> WELCOME PAGE: {{ username }} </title>
+  </head>
+
+  <body>
+    <h1>
+      Welcome back, {{username}}!
+    </h1>
+    <hr>
+    <br>
+    <!--
+    <p> Marc Haddad </p>
+    <p> AMC (Aimy, Marc, Caroline) </p>
+    <p> Software Development </p>
+    <p> K31 -- Take and Give </p>
+    <p> 2026-10-22r </p>
+    <p> time spent: 1 </p>
+    -->
+    <h3>
+      You are currently logged in as: {{ username }}
+    </h3>
+
+    <form action="/logout" method="POST">
+      <input type="submit" value="Log Out">
+    </form>
+
+    <br>
+  </body>
+
+</html>
