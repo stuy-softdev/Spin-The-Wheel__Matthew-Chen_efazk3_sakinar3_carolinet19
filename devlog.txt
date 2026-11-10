@@ -5,6 +5,14 @@
 ### Pr0 - Scenario Sigma
 
 #-------------------------------------------------------
+
+CarolineT -- 2026-11-08 20:30
+- Made minor changes to timeline of design doc
+- Printed out 3 copies of design doc
+
+SakinaR -- 2026-11-07 13:10
+Added paragraph for timeline, fixed component relation map
+
 CarolineT -- 2026-11-07 10:29
 Worked on design doc to match it to the template in notes-and-code
 - Added summary/problem being solved/target users section to design doc
