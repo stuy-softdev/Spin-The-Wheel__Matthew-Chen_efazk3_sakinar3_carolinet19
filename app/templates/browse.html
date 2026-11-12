@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> BROWSE </title>
+  </head>
+  <body>
+    <h1>Stories you can add to</h1>
+    {% if stories %}
+      <ul>
+      {% for story in stories %}
+        <li><a href="/add/{{ story[0] }}">{{ story[1] }}</a></li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No stories to add to right now.</p>
+    {% endif %}
+    <form action="/profile">
+      <input type="submit" value="Back to profile">
+    </form>
+  </body>
+</html>

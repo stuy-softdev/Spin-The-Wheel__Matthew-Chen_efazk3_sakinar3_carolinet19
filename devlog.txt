@@ -6,10 +6,20 @@
 
 #-------------------------------------------------------
 
+CarolineT -- 2026-11-11 21:28
+- Fixed the routes for login and register so logging in and registering are on different routes
+- Added route for profile
+- Added route for new
+- Added route for browse
+- Wrote skeleton code for db.py
+
 MatthewC -- 2026-11-10 14:45
 - Made templates
 - Set up a basic index page
 - Added requirements.txt
+
+CarolineT -- 2026-11-11 14:42
+- Wrote serve.py so that it could create account/login/logout
 
 CarolineT -- 2026-11-08 20:30
 - Made minor changes to timeline of design doc

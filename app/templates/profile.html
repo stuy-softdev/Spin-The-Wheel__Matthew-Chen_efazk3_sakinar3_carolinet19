@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> PROFILE </title>
+  </head>
+  <body>
+    <h1>Welcome, {{ username }}!</h1>
+    <hr>
+    <h3>Your stories</h3>
+    <p>(Nothing here yet)</p>
+
+    <form action="/new">
+      <input type="submit" value="Start a new story">
+    </form>
+    <form action="/browse">
+      <input type="submit" value="Add to a story">
+    </form>
+    <form action="/logout" method="POST">
+      <input type="submit" value="Log Out">
+    </form>
+  </body>
+</html>
