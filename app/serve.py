@@ -123,6 +123,13 @@ def browse():
     browseable_stories = [(1, "Story 1"), (2, "Story 2")]
     return render_template('browse.html', stories=browseable_stories)
 
+@app.route("/add")
+def add():
+    if "username" not in session:
+        # redirect to login page if not logged in
+        return redirect(url_for('login'))
+    return render_template('add.html')    
+
 # logout is POST because the logout button is a form with method="POST"
 @app.route("/logout", methods=["POST"])
 def logout():
