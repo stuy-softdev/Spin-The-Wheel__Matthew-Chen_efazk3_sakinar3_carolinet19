@@ -9,6 +9,10 @@
 CarolineT -- 2026-11-12 14:46
 - Added route for new
 
+SakinaR -- 2026 11-11 22:01
+- Fixed style.css formatting
+- commented past code for checking
+
 CarolineT -- 2026-11-11 21:28
 - Fixed the routes for login and register so logging in and registering are on different routes
 - Added route for profile

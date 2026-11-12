@@ -8,13 +8,18 @@ DB_FILE = "storytelling.db"
 
 def init_db():
     # Creates the users, stories, and contributions tables if they don't exist yet
-    pass
-
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS login (username TEXT PRIMARY KEY, password TEXT)")
 
 def add_user(username, password):
     # Adds a user. Returns false if the username is already taken, returns true otherwise
     print("Fake add_user:", username)
-    return True
+    if(c.execute(f"SELECT exists(SELECT 1 FROM users WHERE username = '{username}') AS row_exists")):
+        return False
+    else:
+        c.execute(f"INSERT INTO students VALUES ('{username}', '{password}')")
+        return True
 
 
 def check_login(username, password):
