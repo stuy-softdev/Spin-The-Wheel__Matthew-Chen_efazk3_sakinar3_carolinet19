@@ -10,7 +10,11 @@ def init_db():
     # Creates the users, stories, and contributions tables if they don't exist yet
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS login (username TEXT PRIMARY KEY, password TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS stories (story_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user_id INTEGER, FOREIGN KEY (user_id) REFERENCES users(user_id))")
+    c.execute("CREATE TABLE IF NOT EXISTS contributions (contribution_id INTEGER PRIMARY KEY AUTOINCREMENT, story_id INTEGER, user_id INTEGER, body TEXT, FOREIGN KEY (story_id) REFERENCES stories(story_id), FOREIGN KEY (user_id) REFERENCES users(user_id))")
+    db.commit()
+    db.close()
 
 def add_user(username, password):
     # Adds a user. Returns false if the username is already taken, returns true otherwise
