@@ -13,7 +13,7 @@
 - Efaz Khan – Scribe, SQL
 
 ## Description of Website:
-(Update later)
+
 
 
 ## Install Guide --> how to clone/install
