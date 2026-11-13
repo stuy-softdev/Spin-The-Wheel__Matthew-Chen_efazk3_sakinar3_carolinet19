@@ -120,15 +120,16 @@ def browse():
         return redirect(url_for('login'))
 
     browseable_stories = db.get_browsable_stories(session["username"])
-    browseable_stories = [(1, "Story 1"), (2, "Story 2")]
+    browseable_stories = [(1, "Story 1"), (2, "Story 2")] # just for testing purposes
     return render_template('browse.html', stories=browseable_stories)
 
-@app.route("/add")
+@app.route(f"/add/1")
 def add():
     if "username" not in session:
         # redirect to login page if not logged in
         return redirect(url_for('login'))
-    return render_template('add.html')    
+    db.get_latest_contribution(1)
+    return render_template('profile.html')
 
 # logout is POST because the logout button is a form with method="POST"
 @app.route("/logout", methods=["POST"])
