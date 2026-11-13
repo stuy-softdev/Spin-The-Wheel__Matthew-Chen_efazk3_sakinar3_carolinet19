@@ -24,8 +24,10 @@ def add_user(username, password):
 
 def check_login(username, password):
     # Returns true if the username/password match a user, returns false otherwise
-    print("Fake check_login:", username)
-    return False
+    c.execute("SELECT username FROM table")
+    info = c.fetchone()
+
+    return info[0] == username and info[1] == password
 
 
 def create_story(username, title, body):
