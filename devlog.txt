@@ -6,6 +6,9 @@
 
 #-------------------------------------------------------
 
+SakinaR -- 2026-11-13 14:40
+- Edited serve.py and worked on databases
+
 MatthewC -- 2026-11-12 14:49
 - Started working on SQLite
 
