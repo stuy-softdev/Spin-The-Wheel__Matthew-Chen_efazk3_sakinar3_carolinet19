@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> BROWSE </title>
+    <title>BROWSE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Stories you can add to</h1>
-    {% if stories %}
-      <ul>
-      {% for story in stories %}
-        <li><a href="/add/{{ story[0] }}">{{ story[1] }}</a></li>
-      {% endfor %}
-      </ul>
-    {% else %}
-      <p>No stories to add to right now.</p>
-    {% endif %}
-    <form action="/profile">
-      <input type="submit" value="Back to profile">
-    </form>
+    <div class="header">
+      <h1>BROWSE STORIES</h1>
+    <div class="middle">
+      <div class="right" style="text-align: center;">
+        <h2 style="color: #c75b9b; font-style: italic;">Stories you can add to</h2>
+        <br>
+        
+        {% if stories %}
+          <ul style="list-style-type: none; padding: 0;">
+          {% for story in stories %}
+            <li style="margin: 12px 0;">
+              <a href="/add/{{ story[0] }}" style="color: #4a2e7a; font-weight: bold; font-size: 18px; text-decoration: underline;">{{ story[1] }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        {% else %}
+          <p style="color: #4a2e7a; font-weight: bold;">No stories to add to right now.</p>
+        {% endif %}
+        <br>
+        <form action="/profile">
+          <input type="submit" value="Back to profile">
+        </form>
+      </div>
+    </div>
+    <div class="feet">
+      <p>Spin The Wheel -- Scenario Sigma</p>
+    </div>
+
   </body>
 </html>

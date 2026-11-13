@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> SPIN THE WHEEL </title>
+    <title>SPIN THE WHEEL</title>
+    <!-- links to css  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Welcome to Spin-The-Wheel's Website!</h1>
-    <hr>
-    <form action="/login">
-      <input type="submit" value="Login">
-    </form>
-    <form action="/register">
-      <input type="submit" value="Create an account">
-    </form>
+    <div class="header">
+      <h1>SPIN THE WHEEL</h1>
+    </div>
+    <div class="middle">
+      <div class="right" style="text-align: center;">
+        <h2 style="color: #c75b9b; font-style: italic;">A Storytelling Game</h2>
+        <br>
+        
+        <div style="display: flex; justify-content: center; gap: 20px;">
+          <form action="/login">
+            <input type="submit" value="Login">
+          </form>
+          <form action="/register">
+            <input type="submit" value="Create an account">
+          </form>
+        </div>
+
+        <br>
+        <p style="color: #4a2e7a; font-weight: bold;">Tell A Story!</p>
+        <p style="color: #4a2e7a; font-weight: bold;">Add to your Old Stories!</p>
+      </div>
+    </div>
+    <div class="feet">
+      <p>Spin The Wheel -- Scenario Sigma</p>
+    </div>
+
   </body>
 </html>
