@@ -2,33 +2,31 @@
 # SoftDev  P00 -- Scenario Sigma
 # Target ship date: 2026-11-18
 
-import os
 import sqlite3
 
 DB_FILE = "storytelling.db"
 
 def init_db():
     # Creates the users, stories, and contributions tables if they don't exist yet
-    if os.path.exists(DB_FILE):
-        os.remove(DB_FILE)
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, password TEXT)")
     c.execute("CREATE TABLE IF NOT EXISTS stories (story_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user_id INTEGER, FOREIGN KEY (user_id) REFERENCES users(user_id))")
-    c.execute("CREATE TABLE IF NOT EXISTS contributions (contribution_id INTEGER PRIMARY KEY AUTOINCREMENT, story_id INTEGER, user_id INTEGER, body TEXT, FOREIGN KEY (story_id) REFERENCES stories(story_id), FOREIGN KEY (user_id) REFERENCES users(user_id))")
-    
-    # Seed default stories so browse has at least two existing stories on first click
-    c.execute("INSERT INTO users (username, password) VALUES ('SystemAuthor', 'password123')")
-    sys_id = c.lastrowid
-    
-    c.execute("INSERT INTO stories (title, user_id) VALUES ('The Mysterious Island', ?)", (sys_id,))
-    s1 = c.lastrowid
-    c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s1, sys_id, 'Once upon a time, a ship drifted toward an uncharted island...'))
-    
-    c.execute("INSERT INTO stories (title, user_id) VALUES ('The Clockwork Kingdom', ?)", (sys_id,))
-    s2 = c.lastrowid
-    c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s2, sys_id, 'In a city powered entirely by gears and steam, shadows moved on their own...'))
+    c.execute("CREATE TABLE IF NOT EXISTS contributions (contribution_id INTEGER PRIMARY KEY AUTOINCREMENT, story_id INTEGER, user_id INTEGER, body TEXT, FOREIGN KEY (story_id) REFERENCES stories(story_id), FOREIGN KEY (user_id) REFERENCES users(user_id), UNIQUE (story_id, user_id))")
 
+    # Seed default stories so browse has at least two existing stories on first click
+    c.execute("SELECT COUNT (*) FROM users")
+    if(c.fetchone()[0] == 0): # Only runs if the database is completely new
+        c.execute("INSERT INTO users (username, password) VALUES ('SystemAuthor', 'password123')")
+        sys_id = c.lastrowid
+
+        c.execute("INSERT INTO stories (title, user_id) VALUES ('The Mysterious Island', ?)", (sys_id,))
+        s1 = c.lastrowid
+        c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s1, sys_id, 'Once upon a time, a ship drifted toward an uncharted island...'))
+
+        c.execute("INSERT INTO stories (title, user_id) VALUES ('The Clockwork Kingdom', ?)", (sys_id,))
+        s2 = c.lastrowid
+        c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s2, sys_id, 'In a city powered entirely by gears and steam, shadows moved on their own...'))
     db.commit()
     db.close()
 
@@ -63,7 +61,7 @@ def check_login(username, password):
     c.execute("SELECT password FROM users WHERE username = ?", (username,))
     row = c.fetchone()
     db.close()
-    
+
     if row and row["password"] == password:
         return True
     return False
@@ -76,12 +74,12 @@ def create_story(username, title, body):
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    
-    # Save the story tied to the creator's user_id[cite: 1]
+
+    # Save the story tied to the creator's user_id
     c.execute("INSERT INTO stories (title, user_id) VALUES (?, ?)", (title, user_id))
     story_id = c.lastrowid
-    
-    # Save the opening text as the first contribution (preventing the creator from contributing twice)[cite: 1]
+
+    # Save the opening text as the first contribution (preventing the creator from contributing twice)
     c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (story_id, user_id, body))
     db.commit()
     db.close()
@@ -95,7 +93,7 @@ def get_story(story_id):
     c.execute("SELECT story_id, title FROM stories WHERE story_id = ?", (story_id,))
     row = c.fetchone()
     db.close()
-    
+
     if row:
         return {"story_id": row["story_id"], "title": row["title"]}
     return None
@@ -108,7 +106,7 @@ def get_latest_contribution(story_id):
     c.execute("SELECT body FROM contributions WHERE story_id = ? ORDER BY contribution_id DESC LIMIT 1", (story_id,))
     row = c.fetchone()
     db.close()
-    
+
     if row:
         return row["body"]
     return ""
@@ -123,14 +121,14 @@ def get_browsable_stories(username):
     db.row_factory = sqlite3.Row
     c = db.cursor()
     c.execute("""
-        SELECT story_id, title FROM stories 
+        SELECT story_id, title FROM stories
         WHERE story_id NOT IN (
             SELECT story_id FROM contributions WHERE user_id = ?
         )
     """, (user_id,))
     rows = c.fetchall()
     db.close()
-    
+
     return [(row["story_id"], row["title"]) for row in rows]
 
 def get_user_stories(username):
@@ -144,24 +142,24 @@ def get_user_stories(username):
     db.row_factory = sqlite3.Row
     c = db.cursor()
     c.execute("""
-        SELECT DISTINCT s.story_id, s.title 
+        SELECT DISTINCT s.story_id, s.title
         FROM stories s
         JOIN contributions co ON s.story_id = co.story_id
         WHERE s.story_id IN (SELECT story_id FROM contributions WHERE user_id = ?)
     """, (user_id,))
     story_rows = c.fetchall()
-    
+
     result = []
     for s_row in story_rows:
         s_id = s_row["story_id"]
-        c.execute("SELECT body FROM contributions WHERE story_id = ?", (s_id,))
+        c.execute("SELECT body FROM contributions WHERE story_id = ? ORDER BY contribution_id", (s_id,))
         parts = [part["body"] for part in c.fetchall()]
         result.append({
             "story_id": s_id,
             "title": s_row["title"],
             "parts": parts
         })
-        
+
     db.close()
     return result
 
@@ -177,14 +175,14 @@ def has_contributed(username, story_id):
     c.execute("SELECT 1 FROM contributions WHERE user_id = ? AND story_id = ?", (user_id, story_id))
     row = c.fetchone()
     db.close()
-    
+
     return row is not None
 
 def add_contribution(username, story_id, body):
     # Adds a contribution. Returns True, or False if this user already added to this story
     if has_contributed(username, story_id):
         return False
-        
+
     user_id = get_user_id(username)
     if not user_id:
         return False

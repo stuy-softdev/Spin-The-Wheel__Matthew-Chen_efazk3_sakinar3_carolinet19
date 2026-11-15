@@ -14,9 +14,9 @@
 
 ## Overview
 
-**Spin The Wheel** is a collaborative storytelling web application built with Python Flask and SQLite. 
+**Spin The Wheel** is a collaborative storytelling web application built with Python Flask and SQLite.
 
-Users can register accounts, create new collaborative stories with an opening text, browse existing stories and add sequential updates to build unique stories together. The platform features a cohesive pastel aesthetic within a custom browser window frame using `wheel.pdf` icons and session security with tab-visible tracking
+Users can register accounts, create new collaborative stories with an opening text, browse existing stories and add sequential updates to build unique stories together. The platform features a cohesive pastel aesthetic within a custom browser window frame using `wheel.pdf` icons.
 
 ---
 

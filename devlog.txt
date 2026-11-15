@@ -6,11 +6,21 @@
 
 #-------------------------------------------------------
 
+CarolineT -- 2026-11-15 9:06
+- Debugged/finished db.py
+- Added gitignore
+- Removed script that was breaking code in add.html, browse.html, new.html, profile.html
+- Removed files that shouldve been gitignored (like .DS_STORE)
+
 SakinaR -- 2026-11-14 23:31
 - Worked on reformatting HTML files
 - Added add.html
 - Fixed login redirecting to profile issues
 - Updated css
+
+CarolineT -- 2026-11-13 14:41
+- Worked on db.py
+- Worked on adding add route
 
 SakinaR -- 2026-11-13 14:40
 - Edited serve.py and worked on databases
