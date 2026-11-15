@@ -2,17 +2,33 @@
 # SoftDev  P00 -- Scenario Sigma
 # Target ship date: 2026-11-18
 
+import os
 import sqlite3
 
 DB_FILE = "storytelling.db"
 
 def init_db():
     # Creates the users, stories, and contributions tables if they don't exist yet
+    if os.path.exists(DB_FILE):
+        os.remove(DB_FILE)
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS users (user_id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)")
     c.execute("CREATE TABLE IF NOT EXISTS stories (story_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user_id INTEGER, FOREIGN KEY (user_id) REFERENCES users(user_id))")
     c.execute("CREATE TABLE IF NOT EXISTS contributions (contribution_id INTEGER PRIMARY KEY AUTOINCREMENT, story_id INTEGER, user_id INTEGER, body TEXT, FOREIGN KEY (story_id) REFERENCES stories(story_id), FOREIGN KEY (user_id) REFERENCES users(user_id))")
+    
+    # Seed default stories so browse has at least two existing stories on first click
+    c.execute("INSERT INTO users (username, password) VALUES ('SystemAuthor', 'password123')")
+    sys_id = c.lastrowid
+    
+    c.execute("INSERT INTO stories (title, user_id) VALUES ('The Mysterious Island', ?)", (sys_id,))
+    s1 = c.lastrowid
+    c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s1, sys_id, 'Once upon a time, a ship drifted toward an uncharted island...'))
+    
+    c.execute("INSERT INTO stories (title, user_id) VALUES ('The Clockwork Kingdom', ?)", (sys_id,))
+    s2 = c.lastrowid
+    c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s2, sys_id, 'In a city powered entirely by gears and steam, shadows moved on their own...'))
+
     db.commit()
     db.close()
 

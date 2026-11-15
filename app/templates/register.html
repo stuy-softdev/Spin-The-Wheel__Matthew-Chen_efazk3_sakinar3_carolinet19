@@ -6,29 +6,26 @@
   </head>
   <body>
     <div class="browser-window">
-      <div class="browser-bar">
-        <input type="text" class="browser-input" value="/register" readonly>
-      </div>
       <div class="header">
-        <img src="{{ url_for('static', filename='wheel.png') }}" class="wheel-icon" alt="Wheel">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
         <h1>REGISTER</h1>
       </div>
       <div class="middle">
-        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 650px; margin: 0 auto;">
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 700px; margin: 0 auto;">
           <div>
             <form action="/login"><input type="submit" value="Have an Account?"></form>
           </div>
           <form action="/register" method="POST" style="text-align: left;">
             <div style="margin-bottom: 12px;">
-              <label style="color: #c75b9b; font-weight: bold; display: inline-block; width: 150px;">Username:</label>
+              <label style="color: #c75b9b; font-weight: bold; display: inline-block; width: 170px;">Username:</label>
               <input type="text" name="username" required>
             </div>
             <div style="margin-bottom: 12px;">
-              <label style="color: #c75b9b; font-weight: bold; display: inline-block; width: 150px;">Password:</label>
+              <label style="color: #c75b9b; font-weight: bold; display: inline-block; width: 170px;">Password:</label>
               <input type="password" name="password" required>
             </div>
             <div style="margin-bottom: 20px;">
-              <label style="color: #c75b9b; font-weight: bold; display: inline-block; width: 150px;">Verify Password:</label>
+              <label style="color: #c75b9b; font-weight: bold; display: inline-block; width: 170px;">Verify Password:</label>
               <input type="password" name="confirm_password" required>
             </div>
             <div style="text-align: center;">

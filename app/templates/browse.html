@@ -6,42 +6,42 @@
   </head>
   <body>
     <div class="browser-window">
-      <div class="browser-bar">
-        <input type="text" class="browser-input" value="/browse" readonly>
-      </div>
-
       <div class="header">
-        <img src="{{ url_for('static', filename='wheel.png') }}" class="wheel-icon" alt="Wheel">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
         <h1>Browse Stories</h1>
       </div>
-
       <div class="middle">
-        <p style="color: #c75b9b; font-style: italic; font-weight: bold; margin-bottom: 25px;">
+        <p style="color: #c75b9b; font-style: italic; font-weight: bold; font-size: 22px; margin-bottom: 30px;">
           Here are some story titles you have not yet contributed to...
         </p>
-
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <div class="story-scroll-container">
           {% if stories %}
             {% for story in stories %}
-              <div style="background-color: #e8e6f5; border: 2px solid #9c8bc4; border-radius: 8px; padding: 15px; width: 200px; text-align: center;">
-                <div style="background-color: #ffd1dc; border: 2px solid #ff9ebb; border-radius: 20px; padding: 5px; font-weight: bold; color: #c75b9b; margin-bottom: 15px;">
+              <div class="story-card-item">
+                <div style="background-color: #ffd1dc; border: 2px solid #ff9ebb; border-radius: 20px; padding: 8px; font-weight: bold; color: #c75b9b; margin-bottom: 15px; font-size: 18px; word-wrap: break-word; white-space: normal;">
                   {{ story[1] }}
                 </div>
-                <form action="/add/{{ story[0] }}">
-                  <input type="submit" value="Continue?" style="font-size: 14px; padding: 6px 15px;">
+                <form action="/add/{{ story[0] }}" method="GET">
+                  <input type="submit" value="Continue?" style="font-size: 16px; padding: 8px 20px;">
                 </form>
               </div>
             {% endfor %}
           {% else %}
-            <p style="color: #4a2e7a; font-weight: bold;">No stories available to add to right now.</p>
+            <p style="color: #4a2e7a; font-weight: bold; font-size: 20px;">No stories available to add to right now.</p>
           {% endif %}
         </div>
-
         <br><br>
         <form action="/profile">
-          <input type="submit" value="Back to Profile" style="font-size: 16px; padding: 8px 20px;">
+          <input type="submit" value="Back to Profile" style="font-size: 18px; padding: 10px 25px;">
         </form>
       </div>
     </div>
+    <script>
+      document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+          navigator.sendBeacon('/logout');
+        }
+      });
+    </script>
   </body>
 </html>

@@ -8,34 +8,13 @@ from flask import request
 from flask import session
 from flask import url_for
 from flask import redirect
-import csv
-import os
 import db
-
-csvfile = "users.csv"
 
 app = Flask(__name__)
 # Set a secret key so Flask can safely sign session cookies
 app.secret_key = "secret_key"
 
-# Creates the CSV file with headers ONLY if it doesn't exist yet
-# ****change this later to use SQL
-def init_csv():
-    if not os.path.exists(csvfile):
-        with open(csvfile, mode="w", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=['USERNAMES', 'PASSWORDS'])
-            writer.writeheader()
-
-
-# Checks the CSV to see if a username and password combo is on it
-# ****change this later to use SQL
-def checkPassword(username, password):
-    with open(csvfile, mode="r", newline="") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if username == row.get("USERNAMES") and password == row.get("PASSWORDS"):
-                return True
-    return False
+db.init_db()
 
 @app.route("/")
 def index():
@@ -51,12 +30,10 @@ def login():
     # GET = they just want to see the page
     if request.method == "GET":
         return render_template('login.html')
-
     # Otherwise it's a POST: they submitted the form
     username = request.form.get('username')
     password = request.form.get('password')
-
-    if checkPassword(username, password):
+    if db.check_login(username, password):
         session["username"] = username  # Establish session state
         return redirect(url_for('profile'))
     else:
@@ -66,40 +43,28 @@ def login():
 def register():
     if request.method == "GET":
         return render_template('register.html')
-
     username = request.form.get('username')
     password = request.form.get('password')
-
     # Checks if either field is empty
     if not username or not password:
         return render_template('response.html', message="Username and password cannot be empty.")
-
     # Check if username already exists
-    with open(csvfile, mode="r", newline="") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if username == row.get("USERNAMES"):
-                return render_template('response.html', message="Username already exists! Try logging in.")
-
-    # Append the new user to the CSV file (mode 'a' = append)
-    with open(csvfile, mode="a", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=['USERNAMES', 'PASSWORDS'])
-        writer.writerow({'USERNAMES': username, 'PASSWORDS': password})
-
+    if not db.add_user(username, password):
+        return render_template('response.html', message="Username already exists! Try logging in.")
     return render_template('response.html', message="Account successfully created! Please return home to log in.")
 
 @app.route("/profile")
 def profile():
-    if "username" not in session:
-        # redirect to login page if not logged in
+    # Check if logged in AND if the user actually exists in the fresh database
+    if "username" not in session or db.get_user_id(session["username"]) is None:
+        session.pop("username", None)  # Clear ghost session
         return redirect(url_for('login'))
-    else:
-        return render_template('profile.html', username=session["username"])
+    return render_template('profile.html', username=session["username"])
 
 @app.route("/new", methods=["GET", "POST"])
 def new():
-    if "username" not in session:
-        # redirect to login page if not logged in
+    if "username" not in session or db.get_user_id(session["username"]) is None:
+        session.pop("username", None)
         return redirect(url_for('login'))
 
     if request.method == "GET":
@@ -115,21 +80,35 @@ def new():
 
 @app.route("/browse")
 def browse():
-    if "username" not in session:
-        # redirect to login page if not logged in
+    if "username" not in session or db.get_user_id(session["username"]) is None:
+        session.pop("username", None)
         return redirect(url_for('login'))
-
     browseable_stories = db.get_browsable_stories(session["username"])
-    browseable_stories = [(1, "Story 1"), (2, "Story 2")] # just for testing purposes
     return render_template('browse.html', stories=browseable_stories)
 
-@app.route(f"/add/1")
-def add():
-    if "username" not in session:
-        # redirect to login page if not logged in
+@app.route("/add/<int:story_id>", methods=["GET", "POST"])
+def add(story_id):
+    if "username" not in session or db.get_user_id(session["username"]) is None:
+        session.pop("username", None)
         return redirect(url_for('login'))
-    db.get_latest_contribution(1)
-    return render_template('profile.html')
+
+    story = db.get_story(story_id)
+    if not story:
+        return render_template('response.html', message="Story does not exist.")
+
+    if request.method == "GET":
+        latest_text = db.get_latest_contribution(story_id)
+        return render_template('add.html', story_id=story_id, story_title=story["title"], latest_text=latest_text)
+
+    body = request.form.get('body')
+    if not body:
+        return render_template('response.html', message="Contribution cannot be empty.")
+
+    success = db.add_contribution(session["username"], story_id, body)
+    if not success:
+        return render_template('response.html', message="You have already contributed to this story!")
+
+    return redirect(url_for('profile'))
 
 # logout is POST because the logout button is a form with method="POST"
 @app.route("/logout", methods=["POST"])
@@ -138,6 +117,6 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == "__main__":
-    init_csv()   # safe now: only creates the file if it's missing
+    db.init_db()
     app.debug = True
     app.run()

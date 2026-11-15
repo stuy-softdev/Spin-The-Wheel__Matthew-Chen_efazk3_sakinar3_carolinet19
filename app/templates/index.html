@@ -6,23 +6,20 @@
   </head>
   <body>
     <div class="browser-window">
-      <div class="browser-bar">
-        <input type="text" class="browser-input" value="/" readonly>
-      </div>
       <div class="header">
-        <img src="{{ url_for('static', filename='wheel.png') }}" class="wheel-icon" alt="Wheel">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
         <h1>SPIN THE WHEEL</h1>
       </div>
       <div class="middle">
-        <h2 style="color: #9b2d88; font-style: italic; margin-top: 0;">A Storytelling Game</h2>
+        <h2 style="color: #9b2d88; font-style: italic; font-size: 2rem; margin-top: 0;">A Storytelling Game</h2>
         <br>
         <div style="display: flex; justify-content: center; gap: 30px;">
           <form action="/login"><input type="submit" value="Login"></form>
           <form action="/register"><input type="submit" value="Register"></form>
         </div>
         <br><br>
-        <p style="color: #9b2d88; font-weight: bold; font-size: 20px; margin: 8px 0;">Tell A Story!</p>
-        <p style="color: #9b2d88; font-weight: bold; font-size: 20px; margin: 8px 0;">Add to your Old Stories!</p>
+        <p style="color: #9b2d88; font-weight: bold; font-size: 24px; margin: 10px 0;">Tell A Story!</p>
+        <p style="color: #9b2d88; font-weight: bold; font-size: 24px; margin: 10px 0;">Add to your Old Stories!</p>
       </div>
     </div>
   </body>

@@ -6,11 +6,8 @@
   </head>
   <body>
     <div class="browser-window">
-      <div class="browser-bar">
-        <input type="text" class="browser-input" value="/login" readonly>
-      </div>
       <div class="header">
-        <img src="{{ url_for('static', filename='wheel.png') }}" class="wheel-icon" alt="Wheel">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
         <h1>LOGIN</h1>
       </div>
       <div class="middle">
@@ -20,11 +17,11 @@
           </div>
           <form action="/login" method="POST" style="text-align: left;">
             <div style="margin-bottom: 15px;">
-              <label for="username" style="color: #c75b9b; font-weight: bold; display: inline-block; width: 110px;">Username:</label>
+              <label for="username" style="color: #c75b9b; font-weight: bold; display: inline-block; width: 130px;">Username:</label>
               <input type="text" id="username" name="username" required>
             </div>
             <div style="margin-bottom: 20px;">
-              <label for="password" style="color: #c75b9b; font-weight: bold; display: inline-block; width: 110px;">Password:</label>
+              <label for="password" style="color: #c75b9b; font-weight: bold; display: inline-block; width: 130px;">Password:</label>
               <input type="password" id="password" name="password" required>
             </div>
             <div style="text-align: center;">
