@@ -6,6 +6,12 @@
 
 #-------------------------------------------------------
 
+SakinaR -- 2026-11-14 23:31
+- Worked on reformatting HTML files
+- Added add.html
+- Fixed login redirecting to profile issues
+- Updated css
+
 SakinaR -- 2026-11-13 14:40
 - Edited serve.py and worked on databases
 
