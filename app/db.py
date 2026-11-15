@@ -9,7 +9,7 @@ DB_FILE = "storytelling.db"
 def init_db():
     # Creates the users, stories, and contributions tables if they don't exist yet
     db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
+    c = db.cursor
     c.execute("CREATE TABLE IF NOT EXISTS login (username TEXT PRIMARY KEY, password TEXT)")
 
 def add_user(username, password):

@@ -5,33 +5,43 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <div class="header">
-      <h1>BROWSE STORIES</h1>
-    <div class="middle">
-      <div class="right" style="text-align: center;">
-        <h2 style="color: #c75b9b; font-style: italic;">Stories you can add to</h2>
-        <br>
-        
-        {% if stories %}
-          <ul style="list-style-type: none; padding: 0;">
-          {% for story in stories %}
-            <li style="margin: 12px 0;">
-              <a href="/add/{{ story[0] }}" style="color: #4a2e7a; font-weight: bold; font-size: 18px; text-decoration: underline;">{{ story[1] }}</a>
-            </li>
-          {% endfor %}
-          </ul>
-        {% else %}
-          <p style="color: #4a2e7a; font-weight: bold;">No stories to add to right now.</p>
-        {% endif %}
-        <br>
+    <div class="browser-window">
+      <div class="browser-bar">
+        <input type="text" class="browser-input" value="/browse" readonly>
+      </div>
+
+      <div class="header">
+        <img src="{{ url_for('static', filename='wheel.png') }}" class="wheel-icon" alt="Wheel">
+        <h1>Browse Stories</h1>
+      </div>
+
+      <div class="middle">
+        <p style="color: #c75b9b; font-style: italic; font-weight: bold; margin-bottom: 25px;">
+          Here are some story titles you have not yet contributed to...
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+          {% if stories %}
+            {% for story in stories %}
+              <div style="background-color: #e8e6f5; border: 2px solid #9c8bc4; border-radius: 8px; padding: 15px; width: 200px; text-align: center;">
+                <div style="background-color: #ffd1dc; border: 2px solid #ff9ebb; border-radius: 20px; padding: 5px; font-weight: bold; color: #c75b9b; margin-bottom: 15px;">
+                  {{ story[1] }}
+                </div>
+                <form action="/add/{{ story[0] }}">
+                  <input type="submit" value="Continue?" style="font-size: 14px; padding: 6px 15px;">
+                </form>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p style="color: #4a2e7a; font-weight: bold;">No stories available to add to right now.</p>
+          {% endif %}
+        </div>
+
+        <br><br>
         <form action="/profile">
-          <input type="submit" value="Back to profile">
+          <input type="submit" value="Back to Profile" style="font-size: 16px; padding: 8px 20px;">
         </form>
       </div>
     </div>
-    <div class="feet">
-      <p>Spin The Wheel -- Scenario Sigma</p>
-    </div>
-
   </body>
 </html>

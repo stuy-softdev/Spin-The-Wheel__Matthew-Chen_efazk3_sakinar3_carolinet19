@@ -18,5 +18,13 @@
     <form action="/logout" method="POST">
       <input type="submit" value="Log Out">
     </form>
+
+    <script>
+      document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+          navigator.sendBeacon('/logout');
+        }
+      });
+    </script>
   </body>
 </html>

@@ -2,35 +2,28 @@
 <html>
   <head>
     <title>SPIN THE WHEEL</title>
-    <!-- links to css  -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <div class="header">
-      <h1>SPIN THE WHEEL</h1>
-    </div>
-    <div class="middle">
-      <div class="right" style="text-align: center;">
-        <h2 style="color: #c75b9b; font-style: italic;">A Storytelling Game</h2>
+    <div class="browser-window">
+      <div class="browser-bar">
+        <input type="text" class="browser-input" value="/" readonly>
+      </div>
+      <div class="header">
+        <img src="{{ url_for('static', filename='wheel.png') }}" class="wheel-icon" alt="Wheel">
+        <h1>SPIN THE WHEEL</h1>
+      </div>
+      <div class="middle">
+        <h2 style="color: #9b2d88; font-style: italic; margin-top: 0;">A Storytelling Game</h2>
         <br>
-        
-        <div style="display: flex; justify-content: center; gap: 20px;">
-          <form action="/login">
-            <input type="submit" value="Login">
-          </form>
-          <form action="/register">
-            <input type="submit" value="Create an account">
-          </form>
+        <div style="display: flex; justify-content: center; gap: 30px;">
+          <form action="/login"><input type="submit" value="Login"></form>
+          <form action="/register"><input type="submit" value="Register"></form>
         </div>
-
-        <br>
-        <p style="color: #4a2e7a; font-weight: bold;">Tell A Story!</p>
-        <p style="color: #4a2e7a; font-weight: bold;">Add to your Old Stories!</p>
+        <br><br>
+        <p style="color: #9b2d88; font-weight: bold; font-size: 20px; margin: 8px 0;">Tell A Story!</p>
+        <p style="color: #9b2d88; font-weight: bold; font-size: 20px; margin: 8px 0;">Add to your Old Stories!</p>
       </div>
     </div>
-    <div class="feet">
-      <p>Spin The Wheel -- Scenario Sigma</p>
-    </div>
-
   </body>
 </html>

@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> NEW STORY </title>
+    <title>CREATE STORY</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Start a new story</h1>
-    <hr>
-    <form action="/new" method="POST">
-      Title: <input type="text" name="title"><br>
-      Opening text:<br>
-      <textarea name="body" rows="8" cols="60"></textarea><br>
-      <input type="submit" value="Start story">
-    </form>
+    <div class="browser-window">
+      <div class="browser-bar">
+        <input type="text" class="browser-input" value="/new" readonly>
+      </div>
+
+      <div class="header">
+        <img src="{{ url_for('static', filename='wheel.png') }}" class="wheel-icon" alt="Wheel">
+        <h1>Create A Story</h1>
+      </div>
+
+      <div class="middle">
+        <form action="/new" method="POST">
+          <div style="text-align: left; max-width: 650px; margin: 0 auto 15px auto;">
+            <label style="color: #c75b9b; font-weight: bold; font-style: italic; font-size: 22px;">Title:</label>
+            <input type="text" name="title" style="width: 100%; max-width: 100%; margin-top: 5px;" required>
+          </div>
+          <div style="text-align: left; max-width: 650px; margin: 0 auto 20px auto;">
+            <textarea name="body" rows="8" style="width: 100%; max-width: 100%;" required></textarea>
+          </div>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
   </body>
 </html>
