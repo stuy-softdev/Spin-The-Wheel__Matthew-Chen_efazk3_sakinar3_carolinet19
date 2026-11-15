@@ -45,9 +45,12 @@ def register():
         return render_template('register.html')
     username = request.form.get('username')
     password = request.form.get('password')
+    confirm = request.form.get('confirm_password')
     # Checks if either field is empty
     if not username or not password:
         return render_template('response.html', message="Username and password cannot be empty.")
+    if password != confirm:
+        return render_template('response.html', message="Passwords do not match.")
     # Check if username already exists
     if not db.add_user(username, password):
         return render_template('response.html', message="Username already exists! Try logging in.")
@@ -59,7 +62,8 @@ def profile():
     if "username" not in session or db.get_user_id(session["username"]) is None:
         session.pop("username", None)  # Clear ghost session
         return redirect(url_for('login'))
-    return render_template('profile.html', username=session["username"])
+    stories = db.get_user_stories(session["username"])
+    return render_template('profile.html', username=session["username"], stories=stories)
 
 @app.route("/new", methods=["GET", "POST"])
 def new():
@@ -88,6 +92,8 @@ def browse():
 
 @app.route("/add/<int:story_id>", methods=["GET", "POST"])
 def add(story_id):
+    if db.has_contributed(session["username"], story_id):
+        return render_template('response.html', message="You have already contributed to this story!")
     if "username" not in session or db.get_user_id(session["username"]) is None:
         session.pop("username", None)
         return redirect(url_for('login'))
