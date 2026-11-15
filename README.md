@@ -31,26 +31,30 @@ cd Spin-The-Wheel__Matthew-Chen_efazk3_sakinar3_carolinet19
 
 ### 2. Set Up a Virtual Environment & Dependencies
 Create and activate your virtual environment:
-```bash
+```
 python3 -m venv .venv 
 source .venv/bin/activate       # On Windows use: .venv\Scripts\activate
+```
 
 Install the required dependencies:
-```bash
+```
 pip install -r requirements.txt
+```
 ---
 
 ## Launch Codes --> How to run
 ### 1. Navigate to the application directory:
-```bash
+```
 cd app
+```
 
 ### 2. Start the Flask server:
-```bash
+```
 python3 serve.py
+```
 
 ### 3. Open your browser and visit:
-```bash
-[http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-
+```
+http://127.0.0.1:5000/
+```
 ---
