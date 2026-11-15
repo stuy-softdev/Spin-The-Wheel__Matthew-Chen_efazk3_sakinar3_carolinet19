@@ -55,6 +55,10 @@ MatthewC -- 2026-11-10 14:45
 CarolineT -- 2026-11-11 14:42
 - Wrote serve.py so that it could create account/login/logout
 
+MatthewC -- 2026-11-09 17:45
+- DD2 REVIEW: Revised design.pdf from v0 based on peer feedback; clarified SQLite table constraints (UNIQUE contribution per user/story), updated site map pathways, and standardized route protections.
+- Main edit: adding the structure tree
+
 CarolineT -- 2026-11-08 20:30
 - Made minor changes to timeline of design doc
 - Printed out 3 copies of design doc
