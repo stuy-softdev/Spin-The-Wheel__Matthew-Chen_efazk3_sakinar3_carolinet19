@@ -1,4 +1,4 @@
-# Spin The Wheel
+# Spin The Wheel by Spin The Wheel
 
 ##<Pr0 - Scenario Sigma> by <Spin The Wheel>
 
@@ -25,9 +25,32 @@ Users can register accounts, create new collaborative stories with an opening te
 ### 1. Clone the Repository
 Clone the project repository to your local machine:
 ```bash
-git clone [https://github.com/stuy-softdev/Spin-The-Wheel__Matthew-Chen_efazk3_sakinar3_carolinet19.git](https://github.com/stuy-softdev/Spin-The-Wheel__Matthew-Chen_efazk3_sakinar3_carolinet19.git)
+git clone 
+[https://github.com/stuy-softdev/Spin-The-Wheel__Matthew-Chen_efazk3_sakinar3_carolinet19.git](https://github.com/stuy-softdev/Spin-The-Wheel__Matthew-Chen_efazk3_sakinar3_carolinet19.git)
+cd Spin-The-Wheel__Matthew-Chen_efazk3_sakinar3_carolinet19
 
+### 2. Set Up a Virtual Environment & Dependencies
+Create and activate your virtual environment:
+```bash
+python3 -m venv .venv 
+source .venv/bin/activate       # On Windows use: .venv\Scripts\activate
+
+Install the required dependencies:
+```bash
+pip install -r requirements.txt
 ---
 
 ## Launch Codes --> How to run
-(Update later)
+### 1. Navigate to the application directory:
+```bash
+cd app
+
+### 2. Start the Flask server:
+```bash
+python3 serve.py
+
+### 3. Open your browser and visit:
+```bash
+[http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+---
