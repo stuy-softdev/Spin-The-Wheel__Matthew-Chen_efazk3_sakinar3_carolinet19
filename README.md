@@ -1,6 +1,6 @@
-# Spin The Wheel by Spin The Wheel
+# Spin The Wheel
 
-##<Pr0 - Scenario Sigma> by <Spin The Wheel>
+**Pr0 - Scenario Sigma> by Spin The Wheel**
 
 ## Roster + Roles:
 - Matthew Chen – Project Manager, Scripter
