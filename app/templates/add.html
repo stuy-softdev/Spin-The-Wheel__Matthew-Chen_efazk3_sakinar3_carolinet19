@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ADD UPDATE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="browser-window">
+      <div class="header">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
+        <h1>Add to Last Update</h1>
+      </div>
+      <div class="middle">
+        <form action="/add/{{ story_id }}" method="POST">
+          <div style="background-color: #e8e6f5; border: 2px solid #9c8bc4; border-radius: 8px; padding: 15px; max-width: 700px; margin: 0 auto 20px auto; text-align: left;">
+            <span style="color: #c75b9b; font-weight: bold; font-style: italic; font-size: 22px;">Title:</span>
+            <span style="color: #c75b9b; font-weight: bold; font-style: italic; font-size: 22px; margin-left: 15px;">{{ story_title }}</span>
+          </div>
+          <div style="background-color: #e8e6f5; border: 2px solid #9c8bc4; border-radius: 8px; padding: 15px; max-width: 700px; margin: 0 auto 20px auto; text-align: left;">
+            <p style="color: #c75b9b; font-weight: bold; margin-top: 0;">Latest update:</p>
+            <p>{{ latest_text }}</p>
+          </div>
+          <div style="max-width: 700px; margin: 0 auto 25px auto;">
+            <textarea name="body" rows="8" style="width: 100%; max-width: 100%;" required></textarea>
+          </div>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

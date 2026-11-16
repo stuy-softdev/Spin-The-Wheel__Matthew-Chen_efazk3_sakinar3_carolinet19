@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> BROWSE </title>
+    <title>BROWSE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Stories you can add to</h1>
-    {% if stories %}
-      <ul>
-      {% for story in stories %}
-        <li><a href="/add/{{ story[0] }}">{{ story[1] }}</a></li>
-      {% endfor %}
-      </ul>
-    {% else %}
-      <p>No stories to add to right now.</p>
-    {% endif %}
-    <form action="/profile">
-      <input type="submit" value="Back to profile">
-    </form>
+    <div class="browser-window">
+      <div class="header">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
+        <h1>Browse Stories</h1>
+      </div>
+      <div class="middle">
+        <p style="color: #c75b9b; font-style: italic; font-weight: bold; font-size: 22px; margin-bottom: 30px;">
+          Here are some story titles you have not yet contributed to...
+        </p>
+        <div class="story-scroll-container">
+          {% if stories %}
+            {% for story in stories %}
+              <div class="story-card-item">
+                <div style="background-color: #ffd1dc; border: 2px solid #ff9ebb; border-radius: 20px; padding: 8px; font-weight: bold; color: #c75b9b; margin-bottom: 15px; font-size: 18px; word-wrap: break-word; white-space: normal;">
+                  {{ story[1] }}
+                </div>
+                <form action="/add/{{ story[0] }}" method="GET">
+                  <input type="submit" value="Continue?" style="font-size: 16px; padding: 8px 20px;">
+                </form>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p style="color: #4a2e7a; font-weight: bold; font-size: 20px;">No stories available to add to right now.</p>
+          {% endif %}
+        </div>
+        <br><br>
+        <form action="/profile">
+          <input type="submit" value="Back to Profile" style="font-size: 18px; padding: 10px 25px;">
+        </form>
+      </div>
+    </div>
   </body>
 </html>

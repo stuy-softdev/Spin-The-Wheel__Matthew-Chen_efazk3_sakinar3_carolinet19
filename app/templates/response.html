@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-
 <html>
-
   <head>
-    <title> RESPONSE </title>
+    <title>RESPONSE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
-
   <body>
-    <h1>
-      System Response
-    </h1>
-    <hr>
-    <br>
-
-    <h3>
-      {{ message }}
-    </h3>
-    <br>
-    <form action="/">
-      <input type="submit" value="Return Home">
-    </form>
+    <div class="browser-window">
+      <div class="header">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
+        <h1>System Response</h1>
+      </div>
+      <div class="middle">
+        <div style="background-color: #b5c7ef; border: 2px solid #9c8bc4; padding: 35px; max-width: 700px; margin: 0 auto 30px auto; border-radius: 8px;">
+          <h3 style="color: #c75b9b; font-style: italic; font-weight: bold; font-size: 24px; margin: 0;">
+            {{ message }}
+          </h3>
+        </div>
+        <form action="/">
+          <input type="submit" value="Return Home">
+        </form>
+      </div>
+    </div>
   </body>
-
 </html>

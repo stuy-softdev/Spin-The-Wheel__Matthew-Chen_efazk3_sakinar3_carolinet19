@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> LOGIN </title>
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Login</h1>
-    <hr>
-    <form action="/login" method="POST">
-      <input type="text" name="username">
-      <input type="password" name="password">
-      <input type="submit" value="Login">
-    </form>
+    <div class="browser-window">
+      <div class="header">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
+        <h1>LOGIN</h1>
+      </div>
+      <div class="middle">
+        <div style="display: flex; align-items: center; justify-content: space-between; max-width: 600px; margin: 0 auto;">
+          <div>
+            <form action="/register"><input type="submit" value="Sign Up?"></form>
+          </div>
+          <form action="/login" method="POST" style="text-align: left;">
+            <div style="margin-bottom: 15px;">
+              <label for="username" style="color: #c75b9b; font-weight: bold; display: inline-block; width: 130px;">Username:</label>
+              <input type="text" id="username" name="username" required>
+            </div>
+            <div style="margin-bottom: 20px;">
+              <label for="password" style="color: #c75b9b; font-weight: bold; display: inline-block; width: 130px;">Password:</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <div style="text-align: center;">
+              <input type="submit" value="Login">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

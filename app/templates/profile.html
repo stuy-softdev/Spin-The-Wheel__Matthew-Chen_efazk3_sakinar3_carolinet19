@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> PROFILE </title>
+    <title>PROFILE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
-    <h1>Welcome, {{ username }}!</h1>
-    <hr>
-    <h3>Your stories</h3>
-    <p>(Nothing here yet)</p>
-
-    <form action="/new">
-      <input type="submit" value="Start a new story">
-    </form>
-    <form action="/browse">
-      <input type="submit" value="Add to a story">
-    </form>
-    <form action="/logout" method="POST">
-      <input type="submit" value="Log Out">
-    </form>
+    <div class="browser-window">
+      <div class="header">
+        <object data="{{ url_for('static', filename='wheel.pdf') }}" type="application/pdf" class="wheel-icon"></object>
+        <h1>Profile</h1>
+      </div>
+      <div class="middle">
+        <div style="background-color: #b5c7ef; border: 2px solid #9c8bc4; padding: 30px; margin-bottom: 30px; border-radius: 8px;">
+          <h2 style="color: #c75b9b; font-style: italic; font-size: 2.2rem; margin-top: 0;">Hi {{ username }}!</h2>
+          <h3 style="color: #c75b9b; font-style: italic; font-size: 1.8rem;">Welcome to Spin The Wheel!</h3>
+          <p style="color: #c75b9b; font-weight: bold; font-size: 24px;">What would you like to do?</p>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 20px;">
+          <form action="/new"><input type="submit" value="Create Story"></form>
+          <form action="/browse"><input type="submit" value="Browse"></form>
+          <form action="/logout" method="POST"><input type="submit" value="Logout"></form>
+        </div>
+        <h2>Your Stories</h2>
+        {% if stories %}
+          {% for story in stories %}
+            <h3>{{ story["title"] }}</h3>
+            {% for part in story["parts"] %}
+              <p>{{ part }}</p>
+            {% endfor %}
+            <hr>
+          {% endfor %}
+        {% else %}
+          <p>Nothing here yet.</p>
+        {% endif %}
+      </div>
+    </div>
   </body>
 </html>

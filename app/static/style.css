@@ -1,109 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+
 body {
     margin: 0;
-    background-color: #a8a2d9;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+    background-color: #bfaee3;
+    font-family: 'Fredoka', Arial, sans-serif;
     color: #4a2e7a;
+    font-size: 18px;
+}
+
+.browser-window {
+    background-color: #a8bce8;
+    border: 5px solid #9c8bc4;
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .header {
-    background-color: #bfaee3;
+    background-color: #9cb5ec;
+    border: 2px solid #b8c8f0;
+    margin: 25px;
+    padding: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-    border-bottom: 3px solid #7d6bb1;
+    position: relative;
+    border-radius: 8px;
 }
 
 .header h1 {
     color: #c75b9b;
     font-style: italic;
+    font-size: 3rem;
+    margin: 0;
     letter-spacing: 2px;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
+}
+
+.wheel-icon {
+    position: absolute;
+    left: 25px;
+    width: 75px;
+    height: 75px;
+    border: none;
+    background: transparent;
 }
 
 .middle {
     background-color: #9cb5ec;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    border: 2px solid #b8c8f0;
+    margin: 0 25px 25px 25px;
     padding: 40px;
-    margin: 20px auto;
-    max-width: 900px;
-    border: 2px solid #e0dbf8;
-    border-radius: 4px;
-}
-
-.right {
-    flex: 4;
+    text-align: center;
+    border-radius: 8px;
 }
 
 button, input[type="submit"], .btn-pill {
     background-color: #ffd1dc;
-    color: #b8336a;
-    border: 2px solid #ff9ebb;
-    border-radius: 30px;
-    padding: 10px 25px;
-    font-weight: bold;
-    font-size: 18px;
+    color: #ff1493;
+    border: 3px solid #ff9ebb;
+    border-radius: 40px;
+    padding: 14px 35px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
     cursor: pointer;
-    text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.1s ease;
 }
 
 button:hover, input[type="submit"]:hover {
     background-color: #ffb6c1;
+    transform: scale(1.05);
 }
 
 input[type="text"], input[type="password"], textarea {
-    background-color: #f0eff8;
-    border: 1px solid #9a8fc2;
-    border-radius: 6px;
-    padding: 8px;
-    font-size: 16px;
-    margin: 5px 0 15px 0;
+    background-color: #e8e6f5;
+    border: 2px solid #9c8bc4;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 18px;
+    font-family: 'Fredoka', sans-serif;
     width: 100%;
-    max-width: 350px;
+    max-width: 550px;
+    color: #4a2e7a;
 }
-
-.feet {
-    background-color: #6c5b9b;
-    text-align: right;
-    color: #e0dbf8;
-    padding: 15px;
-}
-
-
-
-/* body {
-    margin: 1;
-    background-color: #666666;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-}
-.header {
-    background-color: #bebebe;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: start;
-}
-.header h1 {
-    color: white;
-}
-.middle {
-    background-color: #767676;
-    display: flex;
-    gap: 1rem;
-}
-.right{
-    flex: 4;
-}
-.feet {
-    background-color: #565656;
-    text-align: right;
-    color: #bbb9b9;
-    padding: 15px;
-} */
