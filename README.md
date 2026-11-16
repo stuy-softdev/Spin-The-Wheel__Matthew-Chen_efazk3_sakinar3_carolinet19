@@ -18,7 +18,7 @@ Users can register accounts, create new collaborative stories with an opening te
 
 ---
 
-## Install Guide -> how to clone/install
+## Install Guide ---> how to clone/install
 
 ### 1. Clone the Repository
 Clone the project repository to your local machine:
@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 ---
 
-## Launch Codes -> How to run
+## Launch Codes ---> How to run
 
 ### 1. Navigate to the application directory:
 
