@@ -14,19 +14,6 @@ def init_db():
     c.execute("CREATE TABLE IF NOT EXISTS stories (story_id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user_id INTEGER, FOREIGN KEY (user_id) REFERENCES users(user_id))")
     c.execute("CREATE TABLE IF NOT EXISTS contributions (contribution_id INTEGER PRIMARY KEY AUTOINCREMENT, story_id INTEGER, user_id INTEGER, body TEXT, FOREIGN KEY (story_id) REFERENCES stories(story_id), FOREIGN KEY (user_id) REFERENCES users(user_id), UNIQUE (story_id, user_id))")
 
-    # Seed default stories so browse has at least two existing stories on first click
-    c.execute("SELECT COUNT (*) FROM users")
-    if(c.fetchone()[0] == 0): # Only runs if the database is completely new
-        c.execute("INSERT INTO users (username, password) VALUES ('SystemAuthor', 'password123')")
-        sys_id = c.lastrowid
-
-        c.execute("INSERT INTO stories (title, user_id) VALUES ('The Mysterious Island', ?)", (sys_id,))
-        s1 = c.lastrowid
-        c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s1, sys_id, 'Once upon a time, a ship drifted toward an uncharted island...'))
-
-        c.execute("INSERT INTO stories (title, user_id) VALUES ('The Clockwork Kingdom', ?)", (sys_id,))
-        s2 = c.lastrowid
-        c.execute("INSERT INTO contributions (story_id, user_id, body) VALUES (?, ?, ?)", (s2, sys_id, 'In a city powered entirely by gears and steam, shadows moved on their own...'))
     db.commit()
     db.close()
 
