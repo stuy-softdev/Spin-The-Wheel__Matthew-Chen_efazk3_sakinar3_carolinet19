@@ -103,6 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# db files
+storytelling.db
 
 # Ben Attal's BOSS XTRAS
 # https://benattal.github.io/
