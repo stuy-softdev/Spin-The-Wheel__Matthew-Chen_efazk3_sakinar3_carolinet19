@@ -52,7 +52,7 @@ def register():
     if password != confirm:
         return render_template('response.html', message="Passwords do not match.")
     # Check if username already exists
-    if not db.add_user(username, password):
+    elif not db.add_user(username, password):
         return render_template('response.html', message="Username already exists! Try logging in.")
     return render_template('response.html', message="Account successfully created! Please return home to log in.")
 
