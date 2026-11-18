@@ -14,7 +14,6 @@ body {
     width: 90%;
     max-width: 1100px;
     margin: 40px auto;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     border-radius: 12px;
     overflow: hidden;
 }
@@ -37,7 +36,6 @@ body {
     font-size: 3rem;
     margin: 0;
     letter-spacing: 2px;
-    text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
 }
 
 .wheel-icon {
@@ -71,7 +69,6 @@ button, input[type="submit"], .btn-pill {
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: transform 0.1s ease;
 }
 
@@ -91,3 +88,14 @@ input[type="text"], input[type="password"], textarea {
     max-width: 550px;
     color: #4a2e7a;
 }
+
+.story-card-item{
+  background-color: #b8c8f0;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+*{
+  box-sizing: border-box;
+} /* fixes this box misalignment thats caused by padding/borders
+https://dev.to/tammibriggs/two2-ways-to-prevent-padding-from-causing-an-overflow-in-css-4ain */
