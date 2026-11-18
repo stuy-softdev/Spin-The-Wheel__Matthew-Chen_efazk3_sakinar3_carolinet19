@@ -6,8 +6,22 @@
 
 #-------------------------------------------------------
 
+CarolineT -- 2026-11-17 21:30
+- Debugged some css
+- Worked on notes/plan for demo tmmr
+- Added some comments to serve.py
+- Updated devlog (ive been forgetting to keep it updated)
+
+CarolineT -- 2026-11-17 14:46
+- Talked to team about finalizing/how to do the demo for class tomorrow
+- Talked to Sakina about debugging some of the css
+
 MatthewC -- 2026-11-17 14:45
 - Clean up repo
+
+CarolineT -- 2026-11-16 14:46
+- Worked with Sakina to debug the flag/wheel on all of the html pages
+- Showed progress from weekend to the rest of the team
 
 CarolineT -- 2026-11-15 12:43
 - Debugged register (serve.py never checked that the passwords matched)
