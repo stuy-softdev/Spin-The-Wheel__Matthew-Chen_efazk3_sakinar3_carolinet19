@@ -52,15 +52,15 @@ def register():
     if password != confirm:
         return render_template('response.html', message="Passwords do not match.")
     # Check if username already exists
-    if not db.add_user(username, password):
+    elif not db.add_user(username, password):
         return render_template('response.html', message="Username already exists! Try logging in.")
     return render_template('response.html', message="Account successfully created! Please return home to log in.")
 
 @app.route("/profile")
 def profile():
-    # Check if logged in AND if the user actually exists in the fresh database
+    # Check if logged in and if the user actually exists in the fresh database
     if "username" not in session or db.get_user_id(session["username"]) is None:
-        session.pop("username", None)  # Clear ghost session
+        session.pop("username", None)  # Clear ghost session (in case db gets deleted but browser still has old cookie)
         return redirect(url_for('login'))
     stories = db.get_user_stories(session["username"])
     return render_template('profile.html', username=session["username"], stories=stories)
@@ -68,7 +68,7 @@ def profile():
 @app.route("/new", methods=["GET", "POST"])
 def new():
     if "username" not in session or db.get_user_id(session["username"]) is None:
-        session.pop("username", None)
+        session.pop("username", None) # Clear ghost session (in case db gets deleted but browser still has old cookie)
         return redirect(url_for('login'))
 
     if request.method == "GET":
